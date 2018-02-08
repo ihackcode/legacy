@@ -13,7 +13,7 @@ class Message_myUpdater extends Legacy_ModulePhasedUpgrader
 {
     public function Message_myUpdater()
     {
-        parent::Legacy_ModulePhasedUpgrader();
+        parent::__construct();
         $this->_mMilestone = array(
       '041' => 'update041',
       '060' => 'update060',

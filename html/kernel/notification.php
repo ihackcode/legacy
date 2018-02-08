@@ -61,7 +61,7 @@ class XoopsNotification extends XoopsObject
     /**
      * Constructor
      **/
-    public function XoopsNotification()
+    public function __construct()
     {
         $this->XoopsObject();
         $this->initVar('not_id', XOBJ_DTYPE_INT, null, false);
@@ -71,6 +71,10 @@ class XoopsNotification extends XoopsObject
         $this->initVar('not_event', XOBJ_DTYPE_TXTBOX, null, false, 30);
         $this->initVar('not_uid', XOBJ_DTYPE_INT, 0, true);
         $this->initVar('not_mode', XOBJ_DTYPE_INT, 0, false);
+    }
+    public function XoopsNotification()
+    {
+        return self::__construct();
     }
 
 // FIXME:???
@@ -205,15 +209,19 @@ class XoopsNotificationHandler extends XoopsObjectHandler
      */
     public $mTriggerPreAction = null;
     
-    public function XoopsNotificationHandler(&$db)
+    public function __construct(&$db)
     {
-        parent::XoopsObjectHandler($db);
+        parent::__construct($db);
         
         $this->mTrigger =new XCube_Delegate();
         $this->mTrigger->register('XoopsNotificationHandler.Trigger');
 
         $this->mTriggerPreAction =new XCube_Delegate();
         $this->mTriggerPreAction->register("XoopsNotificationHandler.TriggerPreAction");
+    }
+    public function XoopsNotificationHandler(&$db)
+    {
+        return self::__construct($db);
     }
 
     protected function _escapeValue($value, $type=XOBJ_DTYPE_STRING)

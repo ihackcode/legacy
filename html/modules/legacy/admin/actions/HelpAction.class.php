@@ -42,7 +42,7 @@ class Legacy_HelpSmarty extends Smarty
      */
     public $mFilename = null;
 
-    public function Legacy_HelpSmarty()
+    public function __construct()
     {
         parent::Smarty();
 
@@ -128,9 +128,9 @@ class Legacy_HelpAction extends Legacy_Action
      */
     public $mCreateHelpSmarty = null;
     
-    public function Legacy_HelpAction($flag)
+    public function __construct($flag)
     {
-        parent::Legacy_Action($flag);
+        parent::__construct($flag);
         
         $this->mCreateHelpSmarty =new XCube_Delegate();
         $this->mCreateHelpSmarty->add(array(&$this, '_createHelpSmarty'));

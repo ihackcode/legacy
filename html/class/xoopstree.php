@@ -29,7 +29,7 @@
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
 
-class xoopstree
+class XoopsTree
 {
     public $table;     //table with parent-child structure
     public $id;    //name of unique id for records in table $table
@@ -40,12 +40,16 @@ class xoopstree
 
     //constructor of class XoopsTree
     //sets the names of table, unique id, and parend id
-    public function XoopsTree($table_name, $id_name, $pid_name)
+    public function __construct($table_name, $id_name, $pid_name)
     {
         $this->db =& Database::getInstance();
         $this->table = $table_name;
         $this->id = $id_name;
         $this->pid = $pid_name;
+    }
+    public function XoopsTree($table_name, $id_name, $pid_name)
+    {
+        return self::__construct($table_name, $id_name, $pid_name);
     }
 
 

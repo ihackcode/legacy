@@ -43,7 +43,7 @@ class Legacy_ModuleUninstaller
      */
     public $m_fireNotifyUninstallTemplateBegun;
     
-    public function Legacy_ModuleUninstaller()
+    public function __construct()
     {
         $this->mLog =new Legacy_ModuleInstallLog();
         $this->m_fireNotifyUninstallTemplateBegun =new XCube_Delegate();

@@ -28,7 +28,7 @@ class LegacyNewblocksObject extends XoopsSimpleObject
     
     public $mCachetime = null;
 
-    public function LegacyNewblocksObject()
+    public function __construct()
     {
         static $initVars;
         if (isset($initVars)) {

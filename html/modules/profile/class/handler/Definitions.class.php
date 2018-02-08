@@ -16,7 +16,7 @@ class Profile_DefinitionsObject extends XoopsSimpleObject
     /**
      * @public
      */
-    public function Profile_DefinitionsObject()
+    public function __construct()
     {
         $this->initVar('field_id', XOBJ_DTYPE_INT, '', false);
         $this->initVar('field_name', XOBJ_DTYPE_STRING, '', false, 32);

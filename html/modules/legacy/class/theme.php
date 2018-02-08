@@ -16,7 +16,7 @@ require_once XOOPS_ROOT_PATH . '/include/comment_constants.php';
 
 class LegacyThemeObject extends XoopsSimpleObject
 {
-    public function LegacyThemeObject()
+    public function __construct()
     {
         static $initVars;
         if (isset($initVars)) {
@@ -49,7 +49,7 @@ class LegacyThemeHandler extends XoopsObjectHandler
      */
     public $mGetInstalledThemes = null;
     
-    public function LegacyThemeHandler(&$db)
+    public function __construct(&$db)
     {
         $this->mGetInstalledThemes =new XCube_Delegate();
         $this->mGetInstalledThemes->register('LegacyThemeHandler.GetInstalledThemes');

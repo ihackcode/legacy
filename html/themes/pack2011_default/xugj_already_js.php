@@ -70,12 +70,12 @@ function xugj_strip_xoops_module_header_links($document)
 												# quote, otherwise match up to next space
 					'isx", $document, $links);
 
-    while (list($key, $val) = each($links[2])) {
+    foreach($links[2] as $key => $val) {
         if (!empty($val)) {
             $match[] = $val;
         }
     }
-    while (list($key, $val) = each($links[3])) {
+    foreach($links[3] as $key => $val) {
         if (!empty($val)) {
             $match[] = $val;
         }
@@ -84,7 +84,7 @@ function xugj_strip_xoops_module_header_links($document)
     if (empty($match)) {
         return array();
     }
-    while (list($key, $val) = each($match)) {
+    foreach($match as $key => $val) {
         $jsbase_name=pathinfo($val, PATHINFO_BASENAME);
         if (!empty($jsbase_name)) {
             $jsbase_name=strtolower($jsbase_name);

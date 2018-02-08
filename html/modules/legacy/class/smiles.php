@@ -14,7 +14,7 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 class LegacySmilesObject extends XoopsSimpleObject
 {
-    public function LegacySmilesObject()
+    public function __construct()
     {
         static $initVars;
         if (isset($initVars)) {

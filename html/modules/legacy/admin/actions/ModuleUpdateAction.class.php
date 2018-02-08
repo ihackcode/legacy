@@ -82,9 +82,9 @@ class Legacy_ModuleUpdateAction extends Legacy_Action
     
     public $mInstaller = null;
     
-    public function Legacy_ModuleUpdateAction($flag)
+    public function __construct($flag)
     {
-        parent::Legacy_Action($flag);
+        parent::__construct($flag);
         
         $this->mUpdateSuccess =new XCube_Delegate();
         $this->mUpdateSuccess->register('Legacy_ModuleUpdateAction.UpdateSuccess');
@@ -173,11 +173,11 @@ class Legacy_ModuleUpdateAction extends Legacy_Action
     {
         if (!$this->mInstaller->mLog->hasError()) {
             $this->mUpdateSuccess->call(new XCube_Ref($this->mXoopsModule), new XCube_Ref($this->mInstaller->mLog));
-            XCube_DelegateUtils::call('Legacy.Admin.Event.ModuleUpdate.' . ucfirst($this->mXoopsModule->get('dirname') . '.Success'), new XCube_Ref($this->mXoopsModule), new XCube_Ref($this->mInstaller->mLog));
+            XCube_DelegateUtils::call('Legacy.Admin.Event.ModuleUpdate.' . ucfirst($this->mXoopsModule->get('dirname')) . '.Success', new XCube_Ref($this->mXoopsModule), new XCube_Ref($this->mInstaller->mLog));
             XCube_DelegateUtils::call('Legacy.Admin.Event.ModuleUpdate.Success', new XCube_Ref($this->mXoopsModule), new XCube_Ref($this->mInstaller->mLog));
         } else {
             $this->mUpdateFail->call(new XCube_Ref($this->mXoopsModule), new XCube_Ref($this->mInstaller->mLog));
-            XCube_DelegateUtils::call('Legacy.Admin.Event.ModuleUpdate.' . ucfirst($this->mXoopsModule->get('dirname') . '.Fail'), new XCube_Ref($this->mXoopsModule), new XCube_Ref($this->mInstaller->mLog));
+            XCube_DelegateUtils::call('Legacy.Admin.Event.ModuleUpdate.' . ucfirst($this->mXoopsModule->get('dirname')) . '.Fail', new XCube_Ref($this->mXoopsModule), new XCube_Ref($this->mInstaller->mLog));
             XCube_DelegateUtils::call('Legacy.Admin.Event.ModuleUpdate.Fail', new XCube_Ref($this->mXoopsModule), new XCube_Ref($this->mInstaller->mLog));
         }
         

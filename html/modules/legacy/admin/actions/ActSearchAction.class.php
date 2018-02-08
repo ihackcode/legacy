@@ -19,7 +19,7 @@ class Legacy_ActionSearchArgs
     public $mKeywords;
     public $mRecords;
 
-    public function Legacy_ActionSearchArgs($words)
+    public function __construct($words)
     {
         $this->setKeywords($words);
     }
@@ -69,7 +69,7 @@ class Legacy_ActionSearchRecord
     public $mTitle;
     public $mDescription;
 
-    public function Legacy_ActionSearchRecord($moduleName, $url, $title, $desc=null)
+    public function __construct($moduleName, $url, $title, $desc=null)
     {
         $this->mModuleName = $moduleName;
         $this->mActionUrl = $url;
@@ -94,9 +94,9 @@ class Legacy_ActSearchAction extends Legacy_Action
     
     public $mSearchAction = null;
     
-    public function Legacy_ActSearchAction($flag)
+    public function __construct($flag)
     {
-        parent::Legacy_Action($flag);
+        parent::__construct($flag);
         
         $this->mSearchAction =new XCube_Delegate();
         $this->mSearchAction->add(array(&$this, 'defaultSearch'));

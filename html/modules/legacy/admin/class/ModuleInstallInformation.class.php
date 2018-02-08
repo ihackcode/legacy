@@ -34,7 +34,7 @@ class Legacy_BlockInformation
     public $mEditFunc = "";
     public $mTemplate = "";
     
-    public function Legacy_BlockInformation($funcNum, $name, $funcFile, $showFunc, $editFunc, $template, $options = null)
+    public function __construct($funcNum, $name, $funcFile, $showFunc, $editFunc, $template, $options = null)
     {
         $this->mFuncNum = intval($funcNum);
         $this->mName = $name;
@@ -183,7 +183,7 @@ class Legacy_PreferenceInformation
     
     public $mOption = null;
     
-    public function Legacy_PreferenceInformation($name, $title, $description, $formType, $valueType, $default, $order = 0)
+    public function __construct($name, $title, $description, $formType, $valueType, $default, $order = 0)
     {
         $this->mName = $name;
         $this->mTitle = $title;
@@ -257,7 +257,7 @@ class Legacy_PreferenceInfoCollection
     
     public $mNotifications = array();
     
-    public function Legacy_PreferenceInfoCollection()
+    public function __construct()
     {
     }
     
@@ -422,7 +422,7 @@ class Legacy_PreferenceOptionInformation
     public $mName = "";
     public $mValue = "";
     
-    public function Legacy_PreferenceOptionInformation($name, $value)
+    public function __construct($name, $value)
     {
         $this->mName = $name;
         $this->mValue = $value;
@@ -438,7 +438,7 @@ class Legacy_PreferenceOptionInfoCollection
 {
     public $mOptions = array();
     
-    public function Legacy_PreferenceOptionInfoCollection()
+    public function __construct()
     {
     }
     
@@ -472,7 +472,7 @@ class Legacy_PreferenceOptionInfoCollection
 
 class Legacy_AbstractModinfoReader
 {
-    public function Legacy_AbstractModinfoReader()
+    public function __construct()
     {
     }
 
@@ -501,7 +501,7 @@ class Legacy_ModinfoX2FileReader extends Legacy_AbstractModinfoReader
      */
     public $_mDirname = null;
     
-    public function Legacy_ModinfoX2FileReader($dirname)
+    public function __construct($dirname)
     {
         $this->_mDirname = $dirname;
     }
@@ -786,7 +786,7 @@ class Legacy_ModinfoX2DBReader extends Legacy_AbstractModinfoReader
      */
     public $_mDirname = null;
     
-    public function Legacy_ModinfoX2DBReader($dirname)
+    public function __construct($dirname)
     {
         $this->_mDirname = $dirname;
     }

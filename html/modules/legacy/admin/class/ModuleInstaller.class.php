@@ -36,7 +36,7 @@ class Legacy_ModuleInstaller
      */
     public $_mXoopsModule = null;
     
-    public function Legacy_ModuleInstaller()
+    public function __construct()
     {
         $this->mLog =new Legacy_ModuleInstallLog();
     }

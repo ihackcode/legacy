@@ -562,8 +562,14 @@ class Legacy_TextFilter extends XCube_TextFilter
     public static function sMakePreXCodeConvertTable(&$patterns, &$replacements)
     {
         $patterns[] = "/\[code\](.*)\[\/code\]/sU";
-        $replacements[] = create_function('$m', 'return \'[code]\'.base64_encode($m[1]).\'[/code]\';');
+        $replacements[] = 'self::_sCodeToBase64Encode';
     }
+    
+    protected static function _sCodeToBase64Encode($match)
+    {
+        return '[code]' . base64_encode($match[1]) . '[/code]';
+    }
+    
     /**
      * @deprecated
      **/

@@ -53,6 +53,8 @@ class Xupdate_ModulesIniDadaSet
     
     
     private $mTagModule;
+
+    private $disabled_items = array();
     
     protected $mSiteObjects = array();
     protected $mSiteItemArray = array();
@@ -72,6 +74,17 @@ class Xupdate_ModulesIniDadaSet
             'theme' => $mAsset->getObject('handler', 'ThemeStore', false),
             'preload' => $mAsset->getObject('handler', 'PreloadStore', false));
         $this->modHand['package'] = $this->modHand['module'];
+
+        if ($root->mContext->mModuleConfig['disabled_items']) {
+            $_disabled = preg_split('/[\r\n]+/', $root->mContext->mModuleConfig['disabled_items']);
+            foreach($_disabled as $_line) {
+                $_line = trim($_line);
+                list($_sid, $_key) = array_pad(preg_split('/\s*:\s*/', $_line), 2, '');
+                if ($_sid && $_key) {
+                    $this->disabled_items[$_sid . ':' . $_key] = true; 
+                }
+            }
+        }
     }
 
     public function execute($callers, $checkonly = false)
@@ -124,7 +137,7 @@ class Xupdate_ModulesIniDadaSet
 
         if (($checkonly && $cacheCheckStr === 'running')
             || (!$checkonly && $cacheCheckStr === 'bg_ok'.$cacheCheckMd5)
-            || @ filemtime($cacheCheckFile) + $this->cacheTTL > $_SERVER['REQUEST_TIME'] && $cacheCheckStr === ($checkonly? 'bg_ok' : 'ok').$cacheCheckMd5
+            || (@ filemtime($cacheCheckFile) + $this->cacheTTL > $_SERVER['REQUEST_TIME'] && $cacheCheckStr === ($checkonly? 'bg_ok' : 'ok').$cacheCheckMd5)
         ) {
             return false;
         }
@@ -375,7 +388,7 @@ class Xupdate_ModulesIniDadaSet
         foreach ($items as $key => $check) {
             $_sid = $isPackage? intval(substr($check['dirname'], 1)) : $sid;
             // $sid >= 10000: My store (all approve)
-            if ($sid >= 10000 || (isset($this->master[$_sid]) && isset($this->master[$_sid][$check['target_key']]))) {
+            if ($sid >= 10000 || (isset($this->master[$_sid]) && isset($this->master[$_sid][$check['target_key']]) && empty($this->disabled_items[$_sid . ':' . $check['target_key']]))) {
                 $this->approved[$sid][$check['target_key']] = true;
             } else {
                 unset($items[$key]);
@@ -385,6 +398,10 @@ class Xupdate_ModulesIniDadaSet
 
     private function _encodeItem(&$item, $items_lang, $key)
     {
+        $enc = str_replace(array('-', '_'), '', strtolower(_CHARSET));
+        if (! empty($item['addon_url_'.$enc])) {
+            $item['addon_url'] = $item['addon_url_'.$enc];
+        }
         foreach (array('description', 'tag') as $_key) {
             if (! @ json_encode($item[$_key])) {
                 // if not UTF-8
@@ -436,6 +453,7 @@ class Xupdate_ModulesIniDadaSet
         || isset($item['writable_dir'])
         || isset($item['no_overwrite'])
         || isset($item['no_update'])
+        || isset($item['rename_item'])
         || isset($item['delete_file'])
         || isset($item['delete_dir'])) {
             if (isset($item['writable_file'])) {
@@ -449,6 +467,9 @@ class Xupdate_ModulesIniDadaSet
             }
             if (isset($item['no_update'])) {
                 $item_arr['no_update'] = array_filter($item['no_update'], 'strlen');
+            }
+            if (isset($item['rename_item'])) {
+                $item_arr['rename_item'] = array_filter($item['rename_item'], 'strlen');
             }
             if (isset($item['delete_file'])) {
                 $item_arr['delete_file'] = array_filter($item['delete_file'], 'strlen');
@@ -541,6 +562,7 @@ class Xupdate_ModulesIniDadaSet
         $item['writable_file'] = $options['writable_file'];
         $item['delete_dir'] = $options['delete_dir'];
         $item['delete_file'] = $options['delete_file'];
+        $item['rename_item'] = $options['rename_item'];
         $item['force_languages'] = $options['force_languages'];
         if (isset($options['modinfo'])) {
             $item['modinfo'] = $options['modinfo'];

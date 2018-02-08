@@ -21,7 +21,7 @@ class Profile_AbstractAction
     public function &_getHandler()
     {
     }
-    public function Profile_AbstractAction()
+    public function __construct()
     {
         $this->mRoot =& XCube_Root::getSingleton();
         $this->mModule =& $this->mRoot->mContext->mModule;

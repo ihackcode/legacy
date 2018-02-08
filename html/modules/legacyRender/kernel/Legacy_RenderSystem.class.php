@@ -30,10 +30,10 @@ class Legacy_XoopsTpl extends XoopsTpl
      */
     public $_mContextReserve = array();
     
-    public function Legacy_XoopsTpl()
+    public function __construct()
     {
         $this->_mContextReserve = array('xoops_pagetitle' => 'legacy_pagetitle');
-        parent::XoopsTpl();
+        parent::__construct();
     }
     
     public function assign($tpl_var, $value = null)
@@ -125,7 +125,7 @@ class Legacy_RenderSystem extends XCube_RenderSystem
 
     public $mBeginRender = null;
     
-    public function Legacy_RenderSystem()
+    public function __construct()
     {
         parent::XCube_RenderSystem();
         $this->mSetupXoopsTpl =new XCube_Delegate();

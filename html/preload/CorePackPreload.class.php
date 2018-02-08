@@ -43,6 +43,7 @@ class CorePackPreload extends XCube_ActionFilter
             // for ex. 1mb, 1KB
             $val = rtrim($val, 'bB');
             $last = strtolower(substr($val, -1));
+            $val = intval($val);
             switch ($last) {
                 case 't':
                     $val *= 1024;

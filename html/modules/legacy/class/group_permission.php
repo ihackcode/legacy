@@ -14,7 +14,7 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 class LegacyGroup_permissionObject extends XoopsSimpleObject
 {
-    public function LegacyGroup_permissionObject()
+    public function __construct()
     {
         static $initVars;
         if (isset($initVars)) {

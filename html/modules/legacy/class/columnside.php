@@ -16,7 +16,7 @@ require_once XOOPS_ROOT_PATH . '/include/comment_constants.php';
 
 class LegacyColumnsideObject extends XoopsSimpleObject
 {
-    public function LegacyColumnsideObject()
+    public function __construct()
     {
         static $initVars;
         if (isset($initVars)) {
@@ -33,7 +33,7 @@ class LegacyColumnsideHandler extends XoopsObjectHandler
 {
     public $_mResults = array();
     
-    public function LegacyColumnsideHandler(&$db)
+    public function __construct(&$db)
     {
         $t_arr = array(
                 0 => _AD_LEGACY_LANG_SIDE_BLOCK_LEFT,

@@ -6,9 +6,9 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 class LegacyRender_Module extends Legacy_ModuleAdapter
 {
-    public function LegacyRender_Module(&$xoopsModule)
+    public function __construct(&$xoopsModule)
     {
-        parent::Legacy_ModuleAdapter($xoopsModule);
+        parent::__construct($xoopsModule);
         $this->mGetAdminMenu =new XCube_Delegate();
         $this->mGetAdminMenu->register('LegacyRender_Module.getAdminMenu');
     }
