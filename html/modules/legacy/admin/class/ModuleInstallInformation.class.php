@@ -34,6 +34,11 @@ class Legacy_BlockInformation
     public $mEditFunc = "";
     public $mTemplate = "";
 
+    public function Legacy_BlockInformation($funcNum, $name, $funcFile, $showFunc, $editFunc, $template, $options = null)
+    {
+        self::__construct($funcNum, $name, $funcFile, $showFunc, $editFunc, $template, $options);
+    }
+
     public function __construct($funcNum, $name, $funcFile, $showFunc, $editFunc, $template, $options = null)
     {
         $this->mFuncNum = intval($funcNum);
@@ -183,6 +188,11 @@ class Legacy_PreferenceInformation
 
     public $mOption = null;
 
+    public function Legacy_PreferenceInformation($name, $title, $description, $formType, $valueType, $default, $order = 0)
+    {
+        self::__construct($name, $title, $description, $formType, $valueType, $default, $order);
+    }
+
     public function __construct($name, $title, $description, $formType, $valueType, $default, $order = 0)
     {
         $this->mName = $name;
@@ -256,6 +266,11 @@ class Legacy_PreferenceInfoCollection
     public $mComments = array();
 
     public $mNotifications = array();
+
+    public function Legacy_PreferenceInfoCollection()
+    {
+        self::__construct();
+    }
 
     public function __construct()
     {
@@ -422,6 +437,11 @@ class Legacy_PreferenceOptionInformation
     public $mName = "";
     public $mValue = "";
 
+    public function Legacy_PreferenceOptionInformation($name, $value)
+    {
+        self::__construct($name, $value);
+    }
+
     public function __construct($name, $value)
     {
         $this->mName = $name;
@@ -472,6 +492,11 @@ class Legacy_PreferenceOptionInfoCollection
 
 class Legacy_AbstractModinfoReader
 {
+    public function Legacy_AbstractModinfoReader()
+    {
+        self::__construct();
+    }
+
     public function __construct()
     {
     }
@@ -500,6 +525,11 @@ class Legacy_ModinfoX2FileReader extends Legacy_AbstractModinfoReader
      * @protected
      */
     public $_mDirname = null;
+
+    public function Legacy_ModinfoX2FileReader($dirname)
+    {
+        self::__construct($dirname);
+    }
 
     public function __construct($dirname)
     {
@@ -785,6 +815,11 @@ class Legacy_ModinfoX2DBReader extends Legacy_AbstractModinfoReader
      * @protected
      */
     public $_mDirname = null;
+
+    public function Legacy_ModinfoX2DBReader($dirname)
+    {
+        self::__construct($dirname);
+    }
 
     public function __construct($dirname)
     {

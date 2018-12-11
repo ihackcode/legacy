@@ -34,6 +34,11 @@ class Legacy_AdminSmarty extends Smarty
     //
     public $overrideMode = true;
     
+    public function Legacy_AdminSmarty()
+    {
+        self::__construct();
+    }
+
     public function __construct()
     {
         parent::Smarty();

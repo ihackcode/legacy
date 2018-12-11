@@ -19,6 +19,11 @@ class Legacy_PreferenceEditForm extends XCube_ActionForm
     public $mKeyName = "confcat_id";
     public $mKeyValue = 0;
     
+    public function Legacy_PreferenceEditForm(&category)
+    {
+        self::__construct($category);
+    }
+
     public function __construct(&$category)
     {
         parent::XCube_ActionForm();
@@ -139,6 +144,11 @@ class Legacy_PreferenceEditForm extends XCube_ActionForm
 class Legacy_ModulePreferenceEditForm extends Legacy_PreferenceEditForm
 {
     public $mKeyName = "confmod_id";
+
+    public function Legacy_ModulePreferenceEditForm(&$module)
+    {
+        self::__construct($module);
+    }
 
     public function __construct(&$module)
     {

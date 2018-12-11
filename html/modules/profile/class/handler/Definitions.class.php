@@ -13,6 +13,11 @@ class Profile_DefinitionsObject extends XoopsSimpleObject
 {
     public $mFieldType = null;    //Profile_FieldType
 
+    public function Profile_DefinitionsObject()
+    {
+        self::__construct();
+    }
+
     /**
      * @public
      */

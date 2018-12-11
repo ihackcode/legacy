@@ -43,6 +43,11 @@ class Legacy_ModuleUninstaller
      */
     public $m_fireNotifyUninstallTemplateBegun;
     
+    public function Legacy_ModuleUninstaller()
+    {
+        self::__construct();
+    }
+
     public function __construct()
     {
         $this->mLog =new Legacy_ModuleInstallLog();

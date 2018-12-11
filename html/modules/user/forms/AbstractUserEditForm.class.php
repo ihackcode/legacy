@@ -10,6 +10,11 @@ class User_AbstractUserEditForm extends XCube_ActionForm
 {
     public $mConfig = null;
     
+    public function User_AbstractUserEditForm($userConfig)
+    {
+        self::__construct($userConfig);
+    }
+
     public function __construct($userConfig)
     {
         parent::__construct();

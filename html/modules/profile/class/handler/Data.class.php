@@ -13,6 +13,11 @@ class Profile_DataObject extends XoopsSimpleObject
 {
     public $mDef = null;
 
+    public function Profile_DataObject()
+    {
+        self::__construct();
+    }
+
     /**
      * @public
      */

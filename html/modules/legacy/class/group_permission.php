@@ -14,6 +14,11 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 class LegacyGroup_permissionObject extends XoopsSimpleObject
 {
+    public function LegacyGroup_permissionObject()
+    {
+        self::__construct();
+    }
+
     public function __construct()
     {
         static $initVars;
