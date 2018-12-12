@@ -19,12 +19,12 @@ class Legacy_PreferenceEditForm extends XCube_ActionForm
     public $mKeyName = "confcat_id";
     public $mKeyValue = 0;
     
-    public function Legacy_PreferenceEditForm(&category)
+    public function Legacy_PreferenceEditForm($category)
     {
         self::__construct($category);
     }
 
-    public function __construct(&$category)
+    public function __construct($category)
     {
         parent::XCube_ActionForm();
         $this->mKeyValue = $category->get('confcat_id');
