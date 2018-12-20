@@ -88,7 +88,7 @@ class XoopsUser extends XoopsObject
             $this->initVar('user_aim', XOBJ_DTYPE_TXTBOX, null, false, 18);
             $this->initVar('user_yim', XOBJ_DTYPE_TXTBOX, null, false, 25);
             $this->initVar('user_msnm', XOBJ_DTYPE_TXTBOX, null, false, 100);
-            $this->initVar('pass', XOBJ_DTYPE_TXTBOX, null, false, 32);
+            $this->initVar('pass', XOBJ_DTYPE_TXTBOX, null, false, 255);
             $this->initVar('posts', XOBJ_DTYPE_INT, null, false);
             $this->initVar('attachsig', XOBJ_DTYPE_INT, 0, false);
             $this->initVar('rank', XOBJ_DTYPE_INT, 0, false);
@@ -581,6 +581,10 @@ class XoopsUserHandler extends XoopsObjectHandler
         if (!$user->cleanVars()) {
             return false;
         }
+        // check pass colmun length of users table
+        if (!defined('XCUBE_CORE_USER_PASS_LEN_FIXED') && is_callable('User_Utils::checkUsersPassColumnLength')) {
+            User_Utils::checkUsersPassColumnLength();
+        }
         foreach ($user->cleanVars as $k => $v) {
             ${$k} = $v;
         }
@@ -634,6 +638,40 @@ class XoopsUserHandler extends XoopsObjectHandler
             return false;
         }
         return true;
+    }
+
+    /**
+     * Get unames from the database
+     * 
+     * @param object $criteria {@link CriteriaElement} conditions to be met
+     * @param bool $id_as_key use the UID as key for the array?
+     * @return array array of uname
+     */
+    public function getUnames($criteria = null, $id_as_key = false)
+    {
+        $ret = array();
+        $limit = $start = 0;
+        $sql = 'SELECT * FROM '.$this->db->prefix('users');
+        if (isset($criteria) && is_subclass_of($criteria, 'criteriaelement')) {
+            $sql .= ' '.$criteria->renderWhere();
+            if ($criteria->getSort() != '') {
+                $sql .= ' ORDER BY '.$criteria->getSort().' '.$criteria->getOrder();
+            }
+            $limit = $criteria->getLimit();
+            $start = $criteria->getStart();
+        }
+        $result = $this->db->query($sql, $limit, $start);
+        if (!$result) {
+            return $ret;
+        }
+        while ($myrow = $this->db->fetchArray($result)) {
+            if (!$id_as_key) {
+                $ret[] = $myrow['uname'];
+            } else {
+                $ret[$myrow['uid']] = $myrow['uname'];
+            }
+        }
+        return $ret;
     }
 
     /**

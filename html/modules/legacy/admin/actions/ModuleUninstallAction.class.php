@@ -92,6 +92,11 @@ class Legacy_ModuleUninstallAction extends Legacy_Action
     
     public function Legacy_ModuleUninstallAction($flag)
     {
+        self::__construct($flag);
+    }
+
+    public function __construct()
+    {
         parent::__construct($flag);
         
         $this->mUninstallSuccess =new XCube_Delegate();

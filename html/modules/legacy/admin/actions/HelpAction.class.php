@@ -42,6 +42,11 @@ class Legacy_HelpSmarty extends Smarty
      */
     public $mFilename = null;
 
+    public function Legacy_HelpSmarty()
+    {
+        self::__construct();
+    }
+
     public function __construct()
     {
         parent::Smarty();
@@ -128,6 +133,11 @@ class Legacy_HelpAction extends Legacy_Action
      */
     public $mCreateHelpSmarty = null;
     
+    public function Legacy_HelpAction($flag)
+    {
+        self::__construct($flag);
+    }
+
     public function __construct($flag)
     {
         parent::__construct($flag);

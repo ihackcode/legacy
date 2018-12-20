@@ -314,11 +314,14 @@ class XoopsBlock extends XoopsObject
         $ret =& $handler->getAllBlocks($rettype, $side, $visible, $orderby, $isactive);
         return $ret;
     }
-    public function &getByModule($moduleid, $asobject=true)
-    {
+    public static function &sGetByModule($moduleid, $asobject=true) {
         $handler = xoops_gethandler('block');
         $ret =& $handler->getByModule($moduleid, $asobject);
         return $ret;
+    }
+    public function &getByModule($moduleid, $asobject=true)
+    {
+        return self::sGetByModule($moduleid, $asobject);
     }
     public function &getAllByGroupModule($groupid, $module_id=0, $toponlyblock=false, $visible=null, $orderby='b.weight,b.bid', $isactive=1)
     {

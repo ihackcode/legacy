@@ -94,9 +94,9 @@ class User_UserDataUploadConfAction extends User_UserDataUploadAction
                                  }
                                 break;
                               case 'pass':
-                                if (strlen($csv_value)!=32) {
-                                    $update = $user_value != md5($csv_value);
-                                    $csv_value = md5($csv_value);
+                                if (strlen($csv_value) < 32) {
+                                    $csv_value = User_Utils::encryptPassword($csv_value);
+                                    $update = $user_value !== $csv_value;
                                 }
                               default:
                             }

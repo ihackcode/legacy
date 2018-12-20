@@ -11,6 +11,11 @@ class User_AbstractFilterForm
     public $_mCriteria = null;
     public $mNavi = null;
 
+    public function User_AbstractFilterForm(&$navi, &$handler)
+    {
+        self::__construct($navi, $handler);
+    }
+
     public function __construct(&$navi, &$handler)
     {
         $this->mNavi =& $navi;

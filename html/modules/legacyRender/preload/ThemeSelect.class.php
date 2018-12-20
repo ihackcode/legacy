@@ -10,6 +10,11 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 class LegacyRender_ThemeSelect extends XCube_ActionFilter
 {
+    public function LegacyRender_ThemeSelect(&$controller)
+    {
+        self::__construct($controller);
+    }
+
     public function __construct(&$controller)
     {
         parent::__construct($controller);

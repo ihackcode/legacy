@@ -16,6 +16,11 @@ require_once XOOPS_ROOT_PATH . '/include/comment_constants.php';
 
 class LegacyColumnsideObject extends XoopsSimpleObject
 {
+    public function LegacyColumnsideObject()
+    {
+        self::__construct();
+    }
+
     public function __construct()
     {
         static $initVars;
@@ -33,6 +38,11 @@ class LegacyColumnsideHandler extends XoopsObjectHandler
 {
     public $_mResults = array();
     
+    public function LegacyColumnsideHandler(&$db)
+    {
+        self::__construct($db);
+    }
+
     public function __construct(&$db)
     {
         $t_arr = array(

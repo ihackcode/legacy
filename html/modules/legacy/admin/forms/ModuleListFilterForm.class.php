@@ -55,6 +55,10 @@ class Legacy_ModuleListFilterForm extends Legacy_AbstractFilterForm
         MODULE_SORT_KEY_HASCOMMENTS => "hascomments"
     );
 
+    public function Legacy_ModuleListFilterForm() {
+        self::__construct();
+    }
+
     public function __construct()
     {
         $this->_mCriteria =new CriteriaCompo();

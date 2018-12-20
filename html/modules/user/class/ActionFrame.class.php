@@ -27,6 +27,11 @@ class User_ActionFrame
      */
     public $mCreateAction = null;
     
+    public function User_ActionFrame($admin)
+    {
+        self::__construct($admin);
+    }
+
     public function __construct($admin)
     {
         $this->mAdminFlag = $admin;
@@ -147,6 +152,11 @@ class User_ActionFrame
 
 class User_Action
 {
+    public function User_Action()
+    {
+        self::__construct();
+    }
+
     public function __construct()
     {
     }

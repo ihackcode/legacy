@@ -6,6 +6,11 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 class UserRanksObject extends XoopsSimpleObject
 {
+    public function UserRanksObject()
+    {
+        self::__construct();
+    }
+
     public function __construct()
     {
         static $initVars;
