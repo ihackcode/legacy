@@ -340,7 +340,7 @@ function xoops_template_create($resource_type, $resource_name, &$template_source
  **/
 function xoops_template_clear_module_cache($mid)
 {
-    $block_arr =& XoopsBlock::getByModule($mid);
+    $block_arr =& XoopsBlock::sGetByModule($mid);
     $count = count($block_arr);
     if ($count > 0) {
         $xoopsTpl = new XoopsTpl();
