@@ -33,13 +33,6 @@
  * @package Smarty
  */
 class Smarty_Compiler extends Smarty {
-    /**
-     * For backward compatibility of XOOPS Cube
-     */
-    public function Smarty_Compiler()
-    {
-        self::__construct();
-    }
 
     // internal vars
     /**#@+

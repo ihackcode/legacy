@@ -33,13 +33,13 @@ class Profile_DataListAction extends Profile_AbstractListAction
         return $filter;
     }
 
-    /**
-     * @protected
-     */
-    public function _getBaseUrl()
-    {
-        return "./index.php?action=DataList";
-    }
+	/**
+	 * @protected
+	 */
+	public static function _getBaseUrl()
+	{
+		return "./index.php?action=DataList";
+	}
 
     /**
      * @public

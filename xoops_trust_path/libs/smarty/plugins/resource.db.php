@@ -18,45 +18,43 @@ function smarty_resource_db_systemTpl($tpl_name)
     static $replacements = null;
     if (!$patterns) {
         $root=&XCube_Root::getSingleton();
-        $systemTemplates = explode(',', $root->getSiteConfig('Legacy_RenderSystem', 'SystemTemplate', ''));
-        $prefix = $root->getSiteConfig('Legacy_RenderSystem', 'SystemTemplatePrefix', 'legacy');
-        // correction for PHP < 5.2.3
-        $patterns = preg_replace_callback('/^\s*([^\s]*)\s*$/', array('Legacy_ResourcedbUtils', 'makeRegexByMatched'), $systemTemplates);        //$patterns = preg_replace_callback('/^\s*([^\s]*)\s*$/', 'Legacy_ResourcedbUtils::makeRegexByMatched', $systemTemplates);
-
+        $systemTemplates = explode(',',$root->getSiteConfig('Legacy_RenderSystem','SystemTemplate',''));
+        $prefix = $root->getSiteConfig('Legacy_RenderSystem','SystemTemplatePrefix','legacy');
+        $patterns = preg_replace_callback('/^\s*([^\s]*)\s*$/', 'Legacy_ResourcedbUtils::makeRegexByMatched', $systemTemplates);
         $replacements = preg_replace('/^\s*system_([^\s]*)\s*/', $prefix.'_\1', $systemTemplates);
     }
     if ($patterns) {
-        $tpl_name = preg_replace($patterns, $replacements, $tpl_name);
+        $tpl_name = preg_replace($patterns, $replacements,$tpl_name);
     }
     return $tpl_name;
 }
 
 function smarty_resource_db_source($tpl_name, &$tpl_source, &$smarty)
 {
-    $tpl_name = smarty_resource_db_systemTpl($tpl_name);
-    if (!$tpl = smarty_resource_db_tplinfo($tpl_name, $smarty)) {
-        return false;
-    }
-    if (is_object($tpl)) {
-        $tpl_source = $tpl->getVar('tpl_source', 'n');
-    } else {
-        $tpl_source = file_get_contents($tpl) ;
-    }
-    return true;
+	$tpl_name = smarty_resource_db_systemTpl($tpl_name);
+	if (!$tpl = smarty_resource_db_tplinfo($tpl_name, $smarty)) {
+		return false;
+	}
+	if (is_object($tpl)) {
+		$tpl_source = $tpl->getVar('tpl_source', 'n');
+	} else {
+		$tpl_source = file_get_contents($tpl) ;
+	}
+	return true;
 }
 
 function smarty_resource_db_timestamp($tpl_name, &$tpl_timestamp, &$smarty)
 {
-    $tpl_name = smarty_resource_db_systemTpl($tpl_name);
-    if (!$tpl = smarty_resource_db_tplinfo($tpl_name, $smarty)) {
-        return false;
-    }
-    if (is_object($tpl)) {
-        $tpl_timestamp = $tpl->getVar('tpl_lastmodified', 'n');
-    } else {
-        $tpl_timestamp = filemtime($tpl);
-    }
-    return true;
+	$tpl_name = smarty_resource_db_systemTpl($tpl_name);
+	if (!$tpl = smarty_resource_db_tplinfo($tpl_name, $smarty)) {
+		return false;
+	}
+	if (is_object($tpl)) {
+		$tpl_timestamp = $tpl->getVar('tpl_lastmodified', 'n');
+	} else {
+		$tpl_timestamp = filemtime($tpl);
+	}
+	return true;
 }
 
 function smarty_resource_db_secure($tpl_name, &$smarty)

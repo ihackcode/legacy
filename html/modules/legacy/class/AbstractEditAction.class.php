@@ -48,11 +48,11 @@ class Legacy_AbstractEditAction extends Legacy_Action
         return true;
     }
 
-    public function prepare(&$controller, &$xoopsUser)
-    {
-        $this->_setupObject();
-        $this->_setupActionForm();
-    }
+	function prepare(&$controller, &$xoopsUser, &$moduleConfig = null)
+	{
+		$this->_setupObject();
+		$this->_setupActionForm();
+	}
 
     public function getDefaultView(&$controller, &$xoopsUser)
     {

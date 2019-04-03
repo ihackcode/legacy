@@ -34,17 +34,17 @@ class LegacyRender_TplfileListAction extends LegacyRender_AbstractListAction
         return $handler;
     }
 
-    public function &_getFilterForm()
-    {
-        $filter = isset($_REQUEST['tpl_tplset']) ? new LegacyRender_TplfileSetFilterForm($this->_getPageNavi(), $this->_getHandler())
-                                                 : new LegacyRender_TplfileFilterForm($this->_getPageNavi(), $this->_getHandler());
-        return $filter;
-    }
-    
-    public function _getBaseUrl()
-    {
-        return "./index.php?action=TplfileList";
-    }
+	public function &_getFilterForm()
+	{
+		$filter = isset($_REQUEST['tpl_tplset']) ? new LegacyRender_TplfileSetFilterForm($this->_getPageNavi(), $this->_getHandler())
+		                                         : new LegacyRender_TplfileFilterForm($this->_getPageNavi(), $this->_getHandler());
+		return $filter;
+	}
+	
+	public static function _getBaseUrl()
+	{
+		return "./index.php?action=TplfileList";
+	}
 
     public function getDefaultView(&$controller, &$xoopsUser)
     {

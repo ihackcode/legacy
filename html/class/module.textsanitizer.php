@@ -76,7 +76,7 @@ class MyTextSanitizer
     *
     * @todo Sofar, this does nuttin' ;-)
     */
-    public function MyTextSanitizer()
+    function __construct()
     {
         $this->mMakeClickablePostFilter =new XCube_Delegate();
         $this->mMakeClickablePostFilter->register('MyTextSanitizer.MakeClickablePostFilter');
@@ -96,7 +96,7 @@ class MyTextSanitizer
      * @static
      * @staticvar   object
      */
-    public static function &sGetInstance()
+    public static function &getInstance()
     {
         static $instance;
         if (!isset($instance)) {

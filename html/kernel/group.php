@@ -50,18 +50,14 @@ class XoopsGroup extends XoopsObject
         static $initVars;
         if (isset($initVars)) {
             $this->vars = $initVars;
-            return;
-        }
-        $this->XoopsObject();
+	    return;
+	}
+        parent::__construct();
         $this->initVar('groupid', XOBJ_DTYPE_INT, null, false);
         $this->initVar('name', XOBJ_DTYPE_TXTBOX, null, true, 100);
         $this->initVar('description', XOBJ_DTYPE_TXTAREA, null, false);
         $this->initVar('group_type', XOBJ_DTYPE_OTHER, null, false);
         $initVars = $this->vars;
-    }
-    public function XoopsGroup()
-    {
-        return self::__construct();
     }
 }
 
@@ -225,16 +221,12 @@ class XoopsMembership extends XoopsObject
     /**
      * constructor 
      */
-    public function __construct()
+    function __construct()
     {
         $this->XoopsObject();
         $this->initVar('linkid', XOBJ_DTYPE_INT, null, false);
         $this->initVar('groupid', XOBJ_DTYPE_INT, null, false);
         $this->initVar('uid', XOBJ_DTYPE_INT, null, false);
-    }
-    public function XoopsMembership()
-    {
-        return self::__construct();
     }
 }
 

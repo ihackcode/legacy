@@ -36,14 +36,6 @@
  * @package Smarty
  */
 class Config_File {
-    /**
-     * For backward compatibility of XOOPS Cube
-     */
-    public function Config_File()
-    {
-        self::__construct();
-    }
-
     /**#@+
      * Options
      * @var boolean

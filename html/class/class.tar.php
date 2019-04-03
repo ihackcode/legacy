@@ -110,13 +110,13 @@ class tar
     /**#@-*/
 
 
-    /**
-     * Class Constructor -- Does nothing...
-     */
-    public function tar()
-    {
-        return true;
-    }
+	/**
+	 * Class Constructor -- Does nothing...
+	 */
+	function __construct()
+	{
+		return true;
+	}
 
     /**
      * Computes the unsigned Checksum of a file's header

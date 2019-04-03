@@ -33,13 +33,13 @@ class Profile_Admin_DefinitionsListAction extends Profile_AbstractListAction
         return $filter;
     }
 
-    /**
-     * @protected
-     */
-    public function _getBaseUrl()
-    {
-        return "./index.php?action=DefinitionsList";
-    }
+	/**
+	 * @protected
+	 */
+	public static function &_getBaseUrl()
+	{
+		return "./index.php?action=DefinitionsList";
+	}
 
     /**
      * @public

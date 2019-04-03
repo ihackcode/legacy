@@ -25,7 +25,7 @@ class Legacy_MiscFriendAction extends Legacy_Action
         return is_object($xoopsUser);
     }
 
-    public function prepare(&$controller, &$xoopsUser)
+    public function prepare(&$controller, &$xoopsUser, &$moduleConfig)
     {
         $this->mActionForm =new Legacy_MiscFriendForm();
         $this->mActionForm->prepare();

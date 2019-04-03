@@ -13,10 +13,10 @@ class MessageForm extends XCube_ActionForm
 {
     public $fuid = 0;
   
-    public function __construct()
-    {
-        parent::XCube_ActionForm();
-    }
+  public function __construct()
+  {
+    parent::__construct();
+  }
   
     public function getTokenName()
     {

@@ -68,11 +68,11 @@ class XoopsDatabase
          * constructor
          * 
          * will always fail, because this is an abstract class!
-         */
-        public function XoopsDatabase()
-        {
-            // exit("Cannot instantiate this class directly");
-        }
+		 */
+		function __construct()
+		{
+			// exit("Cannot instantiate this class directly");
+		}
 
         /**
          * assign a {@link XoopsLogger} object to the database

@@ -6,55 +6,55 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 class LegacyRenderTplfileObject extends XoopsSimpleObject
 {
-    /**
-     * @access public
-     * @todo mSource
-     */
-    public $Source = null;
-    
-    public $mOverride = null;
-    
-    public function LegacyRenderTplfileObject()
-    {
-        static $initVars;
-        if (isset($initVars)) {
-            $this->mVars = $initVars;
-            return;
-        }
-        $this->initVar('tpl_id', XOBJ_DTYPE_INT, '', true);
-        $this->initVar('tpl_refid', XOBJ_DTYPE_INT, '0', true);
-        $this->initVar('tpl_module', XOBJ_DTYPE_STRING, '', true, 25);
-        $this->initVar('tpl_tplset', XOBJ_DTYPE_STRING, '', true, 50);
-        $this->initVar('tpl_file', XOBJ_DTYPE_STRING, '', true, 50);
-        $this->initVar('tpl_desc', XOBJ_DTYPE_STRING, '', true, 255);
-        $this->initVar('tpl_lastmodified', XOBJ_DTYPE_INT, '0', true);
-        $this->initVar('tpl_lastimported', XOBJ_DTYPE_INT, '0', true);
-        $this->initVar('tpl_type', XOBJ_DTYPE_STRING, '', true, 20);
-        $initVars=$this->mVars;
-    }
-    
-    public function loadSource()
-    {
-        if (!is_object($this->Source)) {
-            $handler =& xoops_getmodulehandler('tplsource', 'legacyRender');
-            $this->Source =& $handler->get($this->get('tpl_id'));
-            if (!is_object($this->Source)) {
-                $this->Source =& $handler->create();
-            }
-        }
-    }
-    
-    /**
-     * Create the clone with source for the template set that is specified by $tplsetName.
-     * 
-     * @param $tplsetName string
-     * @return object LegacyRenderTplfileObject
-     */
-    public function &createClone($tplsetName)
-    {
-        $this->loadSource();
-        
-        $obj =new LegacyRenderTplfileObject();
+	/**
+	 * @access public
+	 * @todo mSource
+	 */
+	var $Source = null;
+	
+	var $mOverride = null;
+	
+	function __construct()
+	{
+		static $initVars;
+		if (isset($initVars)) {
+			$this->mVars = $initVars;
+			return;
+		}
+		$this->initVar('tpl_id', XOBJ_DTYPE_INT, '', true);
+		$this->initVar('tpl_refid', XOBJ_DTYPE_INT, '0', true);
+		$this->initVar('tpl_module', XOBJ_DTYPE_STRING, '', true, 25);
+		$this->initVar('tpl_tplset', XOBJ_DTYPE_STRING, '', true, 50);
+		$this->initVar('tpl_file', XOBJ_DTYPE_STRING, '', true, 50);
+		$this->initVar('tpl_desc', XOBJ_DTYPE_STRING, '', true, 255);
+		$this->initVar('tpl_lastmodified', XOBJ_DTYPE_INT, '0', true);
+		$this->initVar('tpl_lastimported', XOBJ_DTYPE_INT, '0', true);
+		$this->initVar('tpl_type', XOBJ_DTYPE_STRING, '', true, 20);
+		$initVars=$this->mVars;
+	}
+	
+	function loadSource()
+	{
+		if (!is_object($this->Source)) {
+			$handler =& xoops_getmodulehandler('tplsource', 'legacyRender');
+			$this->Source =& $handler->get($this->get('tpl_id'));
+			if (!is_object($this->Source)) {
+				$this->Source =& $handler->create();
+			}
+		}
+	}
+	
+	/**
+	 * Create the clone with source for the template set that is specified by $tplsetName.
+	 * 
+	 * @param $tplsetName string
+	 * @return object LegacyRenderTplfileObject
+	 */
+	function &createClone($tplsetName)
+	{
+		$this->loadSource();
+		
+		$obj =new LegacyRenderTplfileObject();
 
         $obj->set('tpl_refid', $this->get('tpl_refid'));
         $obj->set('tpl_module', $this->get('tpl_module'));

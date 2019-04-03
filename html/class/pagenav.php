@@ -58,7 +58,7 @@ class XoopsPageNav
      * @param   string  $start_name     Name for "start" or "offset"
      * @param   string  $extra_arg      Additional arguments to pass in the URL
      **/
-    public function __construct($total_items, $items_perpage, $current_start, $start_name="start", $extra_arg="")
+    function __construct($total_items, $items_perpage, $current_start, $start_name="start", $extra_arg="")
     {
         $this->total = intval($total_items);
         $this->perpage = intval($items_perpage);

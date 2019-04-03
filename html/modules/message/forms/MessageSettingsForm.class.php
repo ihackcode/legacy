@@ -11,10 +11,10 @@ require_once XOOPS_MODULE_PATH.'/legacy/class/Legacy_Validator.class.php';
 
 class MessageSettingsForm extends XCube_ActionForm
 {
-    public function __construct()
-    {
-        parent::XCube_ActionForm();
-    }
+  public function __construct()
+  {
+    parent::__construct();
+  }
   
     public function getTokenName()
     {

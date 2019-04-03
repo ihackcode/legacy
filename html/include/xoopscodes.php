@@ -80,7 +80,7 @@ function xoopsCodeTarea($textarea_id, $cols=60, $rows=15, $suffix=null)
 */
 function xoopsSmilies($textarea_id)
 {
-    $myts =& MyTextSanitizer::sGetInstance();
+    $myts =& MyTextSanitizer::getInstance();
     $smiles = $myts->getSmileys();
     if (empty($smiles)) {
         $db =& Database::getInstance();

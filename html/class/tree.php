@@ -51,24 +51,24 @@ class XoopsObjectTree
     public $_objects;
     /**#@-*/
 
-    /**
-     * Constructor
-     * 
-     * @param   array   $objectArr  Array of {@link XoopsObject}s 
-     * @param   string     $myId       field name of object ID
-     * @param   string     $parentId   field name of parent object ID
-     * @param   string     $rootId     field name of root object ID
-     **/
-    public function XoopsObjectTree(&$objectArr, $myId, $parentId, $rootId = null)
-    {
-        $this->_objects =& $objectArr;
-        $this->_myId = $myId;
-        $this->_parentId = $parentId;
-        if (isset($rootId)) {
-            $this->_rootId = $rootId;
-        }
-        $this->_initialize();
-    }
+	/**
+	 * Constructor
+	 * 
+	 * @param   array   $objectArr  Array of {@link XoopsObject}s 
+	 * @param   string     $myId       field name of object ID
+	 * @param   string     $parentId   field name of parent object ID
+	 * @param   string     $rootId     field name of root object ID
+	 **/
+	function __construct(&$objectArr, $myId, $parentId, $rootId = null)
+	{
+		$this->_objects =& $objectArr;
+		$this->_myId = $myId;
+		$this->_parentId = $parentId;
+		if (isset($rootId)) {
+			$this->_rootId = $rootId;
+		}
+		$this->_initialize();
+	}
 
     /**
      * Initialize the object

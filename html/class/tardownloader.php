@@ -53,18 +53,18 @@ include_once XOOPS_ROOT_PATH.'/class/class.tar.php';
 class XoopsTarDownloader extends XoopsDownloader
 {
 
-    /**
-     * Constructor
-     * 
-     * @param string $ext       file extension
-     * @param string $mimyType  Mimetype
-     **/
-    public function XoopsTarDownloader($ext = '.tar.gz', $mimyType = 'application/x-gzip')
-    {
-        $this->archiver = new tar();
-        $this->ext = trim($ext);
-        $this->mimeType = trim($mimyType);
-    }
+	/**
+	 * Constructor
+	 * 
+	 * @param string $ext       file extension
+	 * @param string $mimyType  Mimetype
+	 **/
+	function __construct($ext = '.tar.gz', $mimyType = 'application/x-gzip')
+	{
+		$this->archiver = new tar();
+		$this->ext = trim($ext);
+		$this->mimeType = trim($mimyType);
+	}
 
     /**
      * Add a file to the archive

@@ -25,10 +25,10 @@ class LegacyRender_BannerclientListAction extends LegacyRender_AbstractListActio
         return $filter;
     }
 
-    public function _getBaseUrl()
-    {
-        return "./index.php?action=BannerclientList";
-    }
+	public static function _getBaseUrl()
+	{
+		return "./index.php?action=BannerclientList";
+	}
 
     public function executeViewIndex(&$controller, &$xoopsUser, &$render)
     {

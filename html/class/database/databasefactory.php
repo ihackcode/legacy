@@ -1,14 +1,15 @@
 <?php
 class XoopsDatabaseFactory
 {
-    public function XoopsDatabaseFactory()
-    {
-    }
 
-    /**
-     * Get a reference to the only instance of database class and connects to DB
-     *
-     * if the class has not been instantiated yet, this will also take
+	function __construct()
+	{
+	}
+
+	/**
+	 * Get a reference to the only instance of database class and connects to DB
+     * 
+     * if the class has not been instantiated yet, this will also take 
      * care of that
      *
      * @static

@@ -24,7 +24,7 @@ class Legacy_AbstractBlockProcedure
      */
     public $mRender = null;
     
-    public function Legacy_AbstractBlockProcedure()
+    function __construct()
     {
     }
     
@@ -167,7 +167,7 @@ class Legacy_BlockProcedure extends Legacy_AbstractBlockProcedure
      */
     public $mRender = null;
     
-    public function Legacy_BlockProcedure(&$block)
+    function __construct(&$block)
     {
         $this->_mBlock =& $block;
     }

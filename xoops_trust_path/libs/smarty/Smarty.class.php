@@ -63,14 +63,6 @@ define('SMARTY_PHP_ALLOW',      3);
  */
 class Smarty
 {
-    /**
-     * For backward compatibility of XOOPS Cube
-     */
-    public function Smarty()
-    {
-        self::__construct();
-    }
-
     /**#@+
      * Smarty Configuration Section
      */

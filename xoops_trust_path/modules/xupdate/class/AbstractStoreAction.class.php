@@ -77,7 +77,7 @@ class Xupdate_AbstractStoreAction extends Xupdate_AbstractListAction
         return $filter;
     }
 
-    public function _getBaseUrl()
+    public static function _getBaseUrl()
     {
         return './?action='.$this->action;
     }

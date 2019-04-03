@@ -153,7 +153,7 @@ class xoopsmailer
         'LE'           => "\n"
     );
 
-    public function XoopsMailer()
+	public function __construct()
     {
         $this->multimailer = new XoopsMultiMailer();
         $this->reset();

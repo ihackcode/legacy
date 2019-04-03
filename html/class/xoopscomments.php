@@ -42,34 +42,34 @@ class xoopscomments extends XoopsObject
     public $ctable;
     public $db;
 
-    public function XoopsComments($ctable, $id=null)
-    {
-        $this->ctable = $ctable;
-        $this->db =& Database::getInstance();
-        $this->XoopsObject();
-        $this->initVar('comment_id', XOBJ_DTYPE_INT, null, false);
-        $this->initVar('item_id', XOBJ_DTYPE_INT, null, false);
-        $this->initVar('order', XOBJ_DTYPE_INT, null, false);
-        $this->initVar('mode', XOBJ_DTYPE_OTHER, null, false);
-        $this->initVar('subject', XOBJ_DTYPE_TXTBOX, null, false, 255);
-        $this->initVar('comment', XOBJ_DTYPE_TXTAREA, null, false, null);
-        $this->initVar('ip', XOBJ_DTYPE_OTHER, null, false);
-        $this->initVar('pid', XOBJ_DTYPE_INT, 0, false);
-        $this->initVar('date', XOBJ_DTYPE_INT, null, false);
-        $this->initVar('nohtml', XOBJ_DTYPE_INT, 1, false);
-        $this->initVar('nosmiley', XOBJ_DTYPE_INT, 0, false);
-        $this->initVar('noxcode', XOBJ_DTYPE_INT, 0, false);
-        $this->initVar('user_id', XOBJ_DTYPE_INT, null, false);
-        $this->initVar('icon', XOBJ_DTYPE_OTHER, null, false);
-        $this->initVar('prefix', XOBJ_DTYPE_OTHER, null, false);
-        if (!empty($id)) {
-            if (is_array($id)) {
-                $this->assignVars($id);
-            } else {
-                $this->load(intval($id));
-            }
-        }
-    }
+	function __construct($ctable, $id=null)
+	{
+		$this->ctable = $ctable;
+		$this->db =& Database::getInstance();
+		$this->XoopsObject();
+		$this->initVar('comment_id', XOBJ_DTYPE_INT, null, false);
+		$this->initVar('item_id', XOBJ_DTYPE_INT, null, false);
+		$this->initVar('order', XOBJ_DTYPE_INT, null, false);
+		$this->initVar('mode', XOBJ_DTYPE_OTHER, null, false);
+		$this->initVar('subject', XOBJ_DTYPE_TXTBOX, null, false, 255);
+		$this->initVar('comment', XOBJ_DTYPE_TXTAREA, null, false, null);
+		$this->initVar('ip', XOBJ_DTYPE_OTHER, null, false);
+		$this->initVar('pid', XOBJ_DTYPE_INT, 0, false);
+		$this->initVar('date', XOBJ_DTYPE_INT, null, false);
+		$this->initVar('nohtml', XOBJ_DTYPE_INT, 1, false);
+		$this->initVar('nosmiley', XOBJ_DTYPE_INT, 0, false);
+		$this->initVar('noxcode', XOBJ_DTYPE_INT, 0, false);
+		$this->initVar('user_id', XOBJ_DTYPE_INT, null, false);
+		$this->initVar('icon', XOBJ_DTYPE_OTHER, null, false);
+		$this->initVar('prefix', XOBJ_DTYPE_OTHER, null, false);
+		if (!empty($id) ) {
+			if ( is_array($id) ) {
+				$this->assignVars($id);
+			} else {
+				$this->load(intval($id));
+			}
+		}
+	}
 
     public function load($id)
     {

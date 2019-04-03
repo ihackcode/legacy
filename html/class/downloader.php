@@ -48,13 +48,13 @@ class XoopsDownloader
     public $archiver;
     /**#@-*/
 
-    /**
-     * Constructor
-     */
-    public function XoopsDownloader()
-    {
-        //EMPTY
-    }
+	/**
+	 * Constructor
+	 */
+	function __construct()
+	{
+		//EMPTY
+	}
 
     /**
      * Send the HTTP header

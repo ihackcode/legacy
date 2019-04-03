@@ -11,7 +11,7 @@ class LegacyTheme
     public $ScreenShot=null;
     public $mManifesto=null;
     
-    public function LegacyTheme($dirName, $manifesto=null)
+    public function __construct($dirName, $manifesto=null)
     {
         $this->mDirName=$dirName;
         if ($manifesto!=null) {
@@ -33,9 +33,9 @@ class LegacyThemeHandler
 {
     public $_mThemeList;
 
-    public function LegacyThemeHandler()
-    {
-        $this->_mThemeList=array();
+	function __construct()
+	{
+		$this->_mThemeList=array();
 
         if ($handler=opendir(XOOPS_THEME_PATH)) {
             while (($dir=readdir($handler))!==false) {

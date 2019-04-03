@@ -28,7 +28,7 @@ class Legacy_NotifyDeleteAction extends Legacy_Action
     
     public $mErrorMessage = null;
     
-    public function prepare(&$controller, &$xoopsUser)
+    public function prepare(&$controller, &$xoopsUser, &$moduleConfig)
     {
         $controller->mRoot->mLanguageManager->loadPageTypeMessageCatalog('notification');
         $controller->mRoot->mLanguageManager->loadModuleMessageCatalog('legacy');

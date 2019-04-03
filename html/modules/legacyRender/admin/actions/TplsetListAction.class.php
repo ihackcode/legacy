@@ -32,7 +32,7 @@ class LegacyRender_TplsetListAction extends LegacyRender_AbstractListAction
         return $filter;
     }
     
-    public function _getBaseUrl()
+    static function _getBaseUrl()
     {
         return "./index.php?action=TplsetList";
     }

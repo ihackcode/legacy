@@ -33,20 +33,20 @@ class Legacy_AdminControllerStrategy extends Legacy_AbstractControllerStrategy
      */
     public $_mSpecialActions = array("Help", "CommentList");
 
-    public function Legacy_AdminControllerStrategy(&$controller)
-    {
-        global $xoopsOption;
-        
-        parent::Legacy_AbstractControllerStrategy($controller);
-        
-        //
-        // TODO We have to develop complated-switching-controller-mechanizm.
-        //
-        if (!defined("LEGACY_DEPENDENCE_RENDERER")) {
-            define("LEGACY_DEPENDENCE_RENDERER", "Legacy_AdminRenderSystem");
-        }
-        
-        $controller->mRoot->mContext->mBaseRenderSystemName = "Legacy_AdminRenderSystem";
+	function __construct(&$controller)
+	{
+		global $xoopsOption;
+		
+		parent::__construct($controller);
+		
+		//
+		// TODO We have to develop complated-switching-controller-mechanizm.
+		//
+		if (!defined("LEGACY_DEPENDENCE_RENDERER")) {
+			define("LEGACY_DEPENDENCE_RENDERER", "Legacy_AdminRenderSystem");
+		}
+		
+		$controller->mRoot->mContext->mBaseRenderSystemName = "Legacy_AdminRenderSystem";
 
         //
         // Cover the spec of admin.php of the system module, for the compatibility.

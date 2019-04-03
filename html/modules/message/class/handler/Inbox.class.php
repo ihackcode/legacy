@@ -46,10 +46,10 @@ class MessageInboxHandler extends XoopsObjectGenericHandler
     public $mPrimary = 'inbox_id';
     public $mClass = 'MessageInboxObject';
   
-    public function __construct(&$db)
-    {
-        parent::XoopsObjectGenericHandler($db);
-    }
+  public function __construct(&$db)
+  {
+    parent::__construct($db);
+  }
   
     public function getCountUnreadByFromUid($uid)
     {

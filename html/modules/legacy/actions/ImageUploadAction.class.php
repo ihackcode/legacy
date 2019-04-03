@@ -22,7 +22,7 @@ class Legacy_ImageUploadAction extends Legacy_ImageEditAction
 {
     public $mCategory = null;
 
-    public function prepare(&$controller, &$xoopsUser)
+    function prepare(&$controller, &$xoopsUser, &$moduleConfig)
     {
         parent::prepare($controller, $xoopsUser);
         $controller->setDialogMode(true);

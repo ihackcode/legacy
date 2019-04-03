@@ -6,26 +6,26 @@ if (!defined('XOOPS_ROOT_PATH')) {
 
 class LegacyRenderThemeObject extends XoopsSimpleObject
 {
-    public $mPackage = array();
-    public $mActiveResource = true;
-    
-    public function LegacyRenderThemeObject()
-    {
-        static $initVars;
-        if (isset($initVars)) {
-            $this->mVars = $initVars;
-            return;
-        }
-        $this->initVar('id', XOBJ_DTYPE_INT, '', true);
-        $this->initVar('name', XOBJ_DTYPE_STRING, '', true, 255);
-        $this->initVar('tplset_id', XOBJ_DTYPE_INT, '0', true);
-        $this->initVar('enable_select', XOBJ_DTYPE_BOOL, '0', true);
-        $initVars=$this->mVars;
-    }
-    
-    public function loadPackage()
-    {
-        $themeDir = XOOPS_THEME_PATH . "/" . $this->get('name');
+	var $mPackage = array();
+	var $mActiveResource = true;
+	
+	function __construct()
+	{
+		static $initVars;
+		if (isset($initVars)) {
+			$this->mVars = $initVars;
+			return;
+		}
+		$this->initVar('id', XOBJ_DTYPE_INT, '', true);
+		$this->initVar('name', XOBJ_DTYPE_STRING, '', true, 255);
+		$this->initVar('tplset_id', XOBJ_DTYPE_INT, '0', true);
+		$this->initVar('enable_select', XOBJ_DTYPE_BOOL, '0', true);
+		$initVars=$this->mVars;
+	}
+	
+	function loadPackage()
+	{
+		$themeDir = XOOPS_THEME_PATH . "/" . $this->get('name');
 
         if (file_exists($mnfFile = $themeDir . "/manifesto.ini.php")) {
             $iniHandler = new XCube_IniHandler($mnfFile, true);

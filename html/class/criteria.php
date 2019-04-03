@@ -96,7 +96,7 @@ class CriteriaElement
     /**
      * Constructor
      **/
-    public function CriteriaElement()
+    function __construct()
     {
     }
 
